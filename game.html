@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+
+    <style>
+
+        *{
+            margin:0;
+            padding: 0;
+        }
+
+        .wrap{
+            height: 50vh;
+            background-color: lightslategray;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+
+        .item{
+            width: 100px;
+            height: 100px;
+            background-color: salmon;
+            border-radius: 50%;
+            font-size: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: absolute;
+            bottom: 0;
+            left:0;
+            animation: ani_move 1s infinite alternate;
+        }
+
+        .item_2{
+            animation-duration: 1.5s;
+        }
+        .item_3{
+            animation-duration: 2s;
+        }
+
+        @keyframes ani_move {
+            100%{
+                left:120%;
+            }
+        }
+
+        .on{
+            display: none;
+        }
+
+        h3{
+            height: 30px;
+            font-size: 30px;
+            margin-top: 30px;
+            background-color: crimson;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h3{
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .hidden{
+            opacity: 1;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+    <div class="wrap">
+        <h3>다시 한번더 클릭해보세요!</h3>
+        <div class="item item_1">1</div>
+        <div class="item item_2">2</div>
+        <div class="item item_3">3</div>
+    </div>
+
+    <script>
+
+        (function(){
+
+            const wrapEl = document.querySelector('.wrap');
+            const hEl = document.querySelector('h3');
+
+            const handleClick = (e) => {
+                if(e.target.classList.contains('item')){
+                    e.target.classList.add('on');
+                }else{
+                    hEl.classList.add('hidden')
+                    setTimeout(()=>{
+                        hEl.classList.remove('hidden')
+                    },1000)
+                }
+            }
+
+            wrapEl.addEventListener('click', handleClick)
+
+        })();
+
+    </script>
+
+</body>
+</html>
